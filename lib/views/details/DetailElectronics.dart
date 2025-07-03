@@ -1,0 +1,165 @@
+import 'package:flutter/material.dart';
+import 'package:makeup_app/models/product.dart';
+
+
+
+class DetailElectronics extends StatelessWidget {
+  final product Product;
+  const DetailElectronics({Key? key, required this.Product}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: true,
+        leading: InkWell(
+          onTap: () async {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.black,
+            size: 24,
+          ),
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 0,
+      ),
+      backgroundColor: Colors.white,
+      body: Container(
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 1,
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Image.network(
+                          "${Product.image}",
+                          width: 100,
+                          height: 300,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                        child:
+                        Text(
+                          Product.title,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      // Padding(
+                      //   padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      //   child: Text(
+                      //     Product.rating,
+                      //     textAlign: TextAlign.center,
+                      //     style: TextStyle(
+                      //       fontWeight: FontWeight.w300,
+                      //       fontSize: 16,
+                      //     ),
+                      //   ),
+                      // ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.monetization_on,
+                                  color: Color(0xFFFF397B),
+                                  size: 24,
+                                ),
+                                // Padding(
+                                //   padding: EdgeInsetsDirectional.fromSTEB(
+                                //       5, 0, 0, 0),
+                                //   child: Text(
+                                //     'USD ${Product.price}',
+                                //     style: TextStyle(
+                                //       fontSize: 16,
+                                //     ),
+                                //   ),
+                                // )
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                              EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Icon(
+                                    Icons.branding_watermark,
+                                    color: Color(0xFFFF397B),
+                                    size: 24,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5, 0, 0, 0),
+                                    child: Text(
+                                      Product.category,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                        child: Text(
+                          'Description',
+                          style: TextStyle(
+                            color: Color(0xFFFF397B),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
+                        child: Text(
+                          Product.description,
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
